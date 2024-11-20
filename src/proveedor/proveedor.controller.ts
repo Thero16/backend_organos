@@ -4,7 +4,7 @@ import { CreateProveedorDto } from './dto/create-proveedor.dto';
 import { UpdateProveedorDto } from './dto/update-proveedor.dto';
 import { LoginProveedorDto } from './dto/loginProveedor-dto';
 import { UseGuards } from '@nestjs/common';
-import { ProveedorJwtAuthGuard } from 'src/guards/guards';
+import { ProveedorJwtAuthGuard } from 'src/guards/ProveedorJwtAuthGuard';
 import { OwnProveedorDataGuard } from './guard/ownProveedorData.guard';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { Request } from '@nestjs/common';

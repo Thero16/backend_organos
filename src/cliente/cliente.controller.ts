@@ -3,9 +3,10 @@ import { ClienteService } from './cliente.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { LoginClienteDto } from './dto/loginCliente-dto';
-import { ClienteJwtAuthGuard, ProveedorJwtAuthGuard } from 'src/guards/guards';
+import { ProveedorJwtAuthGuard } from 'src/guards/ProveedorJwtAuthGuard';
 import { OwnClienteDataGuard } from './guard/ownClienteData.guard';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+
 
 @ApiTags('cliente')
 @Controller('cliente')
