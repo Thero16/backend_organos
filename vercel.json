@@ -7,5 +7,5 @@
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"]
     }
   ],
-  "outputDirectory": "dist"
+  "outputDirectory": "public"
 }
