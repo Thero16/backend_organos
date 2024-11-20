@@ -7,6 +7,10 @@ import { OrganosDisponiblesModule } from './organos-disponibles/organos-disponib
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GarantiaModule } from './garantia/garantia.module';
+import { Proveedor } from './proveedor/entities/proveedor.entity';
+import { Cliente } from './cliente/entities/cliente.entity';
+import { OrganosDisponible } from './organos-disponibles/entities/organos-disponible.entity';
+import { Garantia } from './garantia/entities/garantia.entity';
 
 
 
@@ -14,12 +18,8 @@ import { GarantiaModule } from './garantia/garantia.module';
   imports: [ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port:+process.env.DB_PORT,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
-      autoLoadEntities: true,
+      url: process.env.DATABASE_URL,
+      entities: [Proveedor, Cliente, OrganosDisponible, Garantia],
       synchronize: true,
     }),
     ProveedorModule, ClienteModule, OrganosDisponiblesModule, GarantiaModule,
