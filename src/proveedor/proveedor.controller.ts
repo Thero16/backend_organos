@@ -32,7 +32,7 @@ export class ProveedorController {
     return this.proveedorService.findOne(id);
   }
 
-  @ApiBearerAuth()  // Indica que este endpoint requiere autenticación JWT
+  @ApiBearerAuth()  // Indica que este endpoint requiere autenticacion JWT
   @ApiOperation({ summary: 'Actualizar un proveedor' })
   @Patch(':id')
   @UseGuards(ProveedorJwtAuthGuard, OwnProveedorDataGuard)
