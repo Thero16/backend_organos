@@ -8,6 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { LoginProveedorDto } from './dto/loginProveedor-dto';
 
+//Proveedor service
 @Injectable()
 export class ProveedorService {
   constructor(@InjectRepository(Proveedor) private readonly proveedorRepository: Repository<Proveedor>,
