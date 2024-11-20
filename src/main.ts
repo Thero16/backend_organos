@@ -1,24 +1,28 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import serverlessExpress from '@vendia/serverless-express';
-import { Callback, Context, Handler } from 'aws-lambda';
-
-let server: Handler;
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
+  app.useGlobalPipes(new ValidationPipe(
+    {
+    whitelist: true,
+    forbidNonWhitelisted: true
+  }));
+
+  const config = new DocumentBuilder()
+    .setTitle('API de Ejemplo')
+    .setDescription('Documentación de la API de ejemplo')
+    .setVersion('1.0')
+    .addTag('usuarios')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+
+  SwaggerModule.setup('api', app, document);
+
   app.enableCors();
-
-  await app.init();
-  const expressApp = app.getHttpAdapter().getInstance();
-  server = serverlessExpress({ app: expressApp });
+  await app.listen(3000);
 }
-
-export const handler: Handler = async (event: any, context: Context, callback: Callback) => {
-  if (!server) {
-    await bootstrap();
-  }
-  return server(event, context, callback);
-};
+bootstrap();
