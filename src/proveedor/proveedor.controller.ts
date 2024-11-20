@@ -9,7 +9,7 @@ import { OwnProveedorDataGuard } from './guard/ownProveedorData.guard';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { Request } from '@nestjs/common';
 
-@ApiTags('proveedores')  // Etiqueta general para el grupo de endpoints
+@ApiTags('proveedores')  // Etiqueta general para el grupo de endpoint
 @Controller('proveedor')
 export class ProveedorController {
   constructor(private readonly proveedorService: ProveedorService) {}
