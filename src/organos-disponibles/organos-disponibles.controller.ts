@@ -3,10 +3,10 @@ import { OrganosDisponiblesService } from './organos-disponibles.service';
 import { CreateOrganosDisponibleDto } from './dto/create-organos-disponible.dto';
 import { UpdateOrganosDisponibleDto } from './dto/update-organos-disponible.dto';
 import { getProveedor } from '../proveedor/decorators/getProveedor.decorator';
-import { Proveedor } from 'src/proveedor/entities/proveedor.entity';
+import { Proveedor } from '../proveedor/entities/proveedor.entity';
 import { ProveedorJwtAuthGuard } from 'src/proveedor/guard/ProveedorJwtAuthGuard';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
-import { Garantia } from 'src/garantia/entities/garantia.entity';
+import { Garantia } from '../garantia/entities/garantia.entity';
 import { Request } from '@nestjs/common';
 import { NotFoundException, ForbiddenException } from '@nestjs/common';
 

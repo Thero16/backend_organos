@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { GarantiaService } from './garantia.service';
 import { CreateGarantiaDto } from './dto/create-garantia.dto';
 import { UpdateGarantiaDto } from './dto/update-garantia.dto';
-import { ProveedorJwtAuthGuard } from 'src/guards/guards';
+import { ProveedorJwtAuthGuard } from '../proveedor/guard/ProveedorJwtAuthGuard';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiTags('garantia') // Para agrupar los endpoints relacionados con 'garantia'

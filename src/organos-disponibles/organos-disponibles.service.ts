@@ -4,8 +4,8 @@ import { UpdateOrganosDisponibleDto } from './dto/update-organos-disponible.dto'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { OrganosDisponible } from './entities/organos-disponible.entity';
-import { Proveedor } from 'src/proveedor/entities/proveedor.entity';
-import { Garantia } from 'src/garantia/entities/garantia.entity';
+import { Proveedor } from '../proveedor/entities/proveedor.entity';
+import { Garantia } from '../garantia/entities/garantia.entity';
 import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
