@@ -5,12 +5,17 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe(
-    {
-    whitelist: true,
-    forbidNonWhitelisted: true
-  }));
 
+  // Configuración global de validación
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true, // Transforma las propiedades de las solicitudes según los DTOs
+    }),
+  );
+
+  // Configuración de Swagger
   const config = new DocumentBuilder()
     .setTitle('API de Ejemplo')
     .setDescription('Documentación de la API de ejemplo')
@@ -19,16 +24,16 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-
   SwaggerModule.setup('api', app, document);
 
-  const cors= require("cors");
-  const corsConfig= {
+  // Configuración de CORS nativa de NestJS
+  app.enableCors({
     origin: "*",
-    credential: true,
-    methods: ["GET","POST","PUT","DELETE"],
-  }
-  app.use(cors(corsConfig));
-  await app.listen(3000);
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  });
+
+  // Escuchar en el puerto definido o en 3000 por defecto
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
